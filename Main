@@ -47,6 +47,19 @@ public class Main {
         }
     }
     
+     static void print_all_teams_name(Root temp){
+        Set<String> array_of_team_names = new HashSet<>();
+        for(int i = 0; i< temp.events.size();i++){
+            array_of_team_names.add(temp.events.get(i).competitors.get(0).name);
+            array_of_team_names.add(temp.events.get(i).competitors.get(1).name);
+        }
+        ArrayList<String> res = new ArrayList<>(array_of_team_names);
+        Collections.sort(res);
+        for (String re : res) {
+            System.out.println(re);
+        }
+    }
+    
     public static void main(String[] args) throws IOException {
         File newState = new File("BE_data.json");
         ObjectMapper reader = new ObjectMapper();
@@ -58,5 +71,7 @@ public class Main {
         System.out.println("Please input count of events that you need");
         int count_of_events = myInput.nextInt();
         print_events_with_parameter(count_of_events,array_of_events);
+        
+        print_all_teams_name(array_of_events);
     }
 }
