@@ -36,11 +36,27 @@ public class Main {
         }
     }
     
+    static void print_events_with_parameter(int count, Root temp){
+        try {
+            for (int i = count; i >= 0; i--) {
+                System.out.println(temp.events.get(i));
+            }
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println("This number is larger than the count of events");
+        }
+    }
+    
     public static void main(String[] args) throws IOException {
         File newState = new File("BE_data.json");
         ObjectMapper reader = new ObjectMapper();
         Root array_of_events = reader.readValue(newState, Root.class);
         
         print_events_with_most_probable_results(array_of_events);
+        
+        Scanner myInput = new Scanner( System.in );
+        System.out.println("Please input count of events that you need");
+        int count_of_events = myInput.nextInt();
+        print_events_with_parameter(count_of_events,array_of_events);
     }
 }
