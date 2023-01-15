@@ -1,0 +1,34 @@
+package com.company;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Root {
+    @JsonProperty("Events")
+    public ArrayList<Sport_event> events;
+
+    public Root(ArrayList<Sport_event> events) {
+        this.events = events;
+    }
+
+    public Root() {
+        this.events = null;
+    }
+
+    public ArrayList<Sport_event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(ArrayList<Sport_event> events) {
+        this.events = events;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "events=" + events +
+                '}';
+    }
+}
