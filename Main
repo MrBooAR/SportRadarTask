@@ -1,0 +1,13 @@
+package com.company;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+public class Main {
+    
+    public static void main(String[] args) throws IOException {
+        File newState = new File("BE_data.json");
+        ObjectMapper reader = new ObjectMapper();
+        Root array_of_events = reader.readValue(newState, Root.class);
+    }
+}
